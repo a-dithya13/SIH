@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - STEM Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container" style="max-width: 480px;">
+        <h1 style="color: white; text-align: center; margin: 2rem 0;">Welcome back</h1>
+        <div class="dashboard" role="form" aria-label="Login Form">
+            <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 1rem;">
+                <h2 style="margin: 0;">Login</h2>
+                <a href="signup.html" class="cta-button" style="padding: 0.5rem 1rem; text-decoration: none;">Sign up</a>
+            </div>
+            <label for="login-username" style="display:block; margin: 0.5rem 0 0.25rem;">Username</label>
+            <input id="login-username" type="text" placeholder="Enter username" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+            <label for="login-password" style="display:block; margin: 0.75rem 0 0.25rem;">Password</label>
+            <input id="login-password" type="password" placeholder="Enter password" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+            <button id="doLogin" class="run-button" style="width: 100%; margin-top: 1rem;">Login</button>
+            <p id="login-error" style="color:#ef4444; margin-top:0.75rem; display:none;">Invalid username or password</p>
+        </div>
+        <p style="text-align:center; margin-top: 1rem;"><a href="index.html" style="color: white; text-decoration: underline;">Back to Home</a></p>
+    </main>
+
+    <script>
+    (function(){
+        function getUsers(){
+            try { return JSON.parse(localStorage.getItem('sih_users')) || []; } catch(_) { return []; }
+        }
+        function setUserSession(user){
+            localStorage.setItem('sih_user', JSON.stringify({ name: user.name, username: user.username }));
+        }
+        document.getElementById('doLogin').addEventListener('click', function(){
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+            const users = getUsers();
+            const match = users.find(u => u.username === username && u.password === password);
+            if (!match) {
+                document.getElementById('login-error').style.display = 'block';
+                return;
+            }
+            setUserSession(match);
+            window.location.href = 'index.html';
+        });
+    })();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM Academy - National Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo" tabindex="0" aria-label="STEM Academy Home">
+                <span aria-hidden="true">🧬</span>
+                <span>STEM Academy</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('dashboard')" aria-label="Go to Dashboard">Dashboard</a></li>
+                <li><a href="#" onclick="showSection('subjects')" aria-label="Go to Subjects" style="letter-spacing:0.2px;">Subjects</a></li>
+                <li><a href="#" onclick="showSection('challenges')" aria-label="Go to Challenges">Challenges</a></li>
+                <li><a href="#" onclick="showSection('leaderboard')" aria-label="Go to Leaderboard">Leaderboard</a></li>
+                <li><a href="#" onclick="showSection('profile')" aria-label="Go to Profile">Profile</a></li>
+            </ul>
+            <div class="auth-actions">
+                <button id="kidModeToggle" class="cta-button kid-mode">Student Mode</button>
+                <a id="loginBtn" href="login.html" class="cta-button" style="padding: 0.5rem 1rem; text-decoration: none; display:inline-block;">Login</a>
+                <button id="logoutBtn" class="cta-button hidden logout-btn">Logout</button>
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="hero" class="hero" aria-label="Welcome Section">
+            <h1 class="title-solid">Master STEM Skills</h1>
+            <p>Interactive learning platform for Science, Technology, Engineering &amp; Mathematics</p>
+            <button class="cta-button" onclick="showSection('dashboard')" aria-label="Start Learning">Start Learning</button>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard hidden" aria-label="User Dashboard">
+            <h2 class="u-mt-13">Your Learning Dashboard</h2>
+            <div class="stats-grid" aria-label="User Statistics">
+                <div class="stat-card" style="margin-top:-2px;">
+                    <div class="stat-number" aria-label="Problems Solved">127</div>
+                    <div>Problems Solved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" aria-label="Success Rate">85%</div>
+                    <div>Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" aria-label="Day Streak">42</div>
+                    <div>Day Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" aria-label="XP Points">1,347</div>
+                    <div>XP Points</div>
+                </div>
+            </div>
+            <div class="stats-grid" style="grid-template-columns: 1fr 1fr; align-items:center;">
+                <div class="progress-widget">
+                    <div class="progress-ring" data-progress="73">
+                        <svg width="120" height="120">
+                            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+                            <circle class="ring-fg" cx="60" cy="60" r="52"></circle>
+                        </svg>
+                        <div class="ring-label">73% Path</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="rank-badge">Rank • Apprentice III</div>
+                    <div style="margin-top:8px; color:#4b5563;">Solve 7 more medium problems to reach Journeyman I</div>
+                </div>
+            </div>
+            
+            <h3>Recent Achievements</h3>
+            <div class="achievements" style="margin: 1rem 0;">
+                <span class="achievement-badge" title="Algorithm Master">🏆 Algorithm Master</span>
+                <span class="achievement-badge" title="Chemistry Explorer">🔬 Chemistry Explorer</span>
+                <span class="achievement-badge" title="Speed Coder">⚡ Speed Coder</span>
+            </div>
+        </section>
+
+        <!-- Subjects Section -->
+        <section id="subjects" class="subjects-grid hidden" aria-label="Subjects">
+            <div class="subject-card" tabindex="0" onclick="showChallenges('programming')" aria-label="Programming" style="margin-bottom:1.1rem;">
+                <div class="subject-icon" aria-hidden="true">💻</div>
+                <h3>Programming</h3>
+                <p>Learn Python, JavaScript, algorithms and data structures</p>
+                <div class="progress-bar" aria-label="75% Complete">
+                    <div class="progress-fill prog-programming" style="width: 75%;"></div>
+
+                </div>
+                <small>75% Complete • 45 challenges</small>
+            </div>
+
+            <div class="subject-card" tabindex="0" onclick="showChallenges('mathematics')" aria-label="Mathematics" style="margin-top:6px;">
+                <div class="subject-icon" aria-hidden="true">🧮</div>
+                <h3>Mathematics</h3>
+                <p>Algebra, Calculus, Statistics, and Applied Math</p>
+                <div class="progress-bar" aria-label="60% Complete">
+                    <div class="progress-fill" style="width: 60%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                </div>
+                <small>60% Complete • 38 challenges</small>
+            </div>
+
+            <div class="subject-card" tabindex="0" onclick="showChallenges('physics')" aria-label="Physics">
+                <div class="subject-icon" aria-hidden="true">⚛️</div>
+                <h3>Physics</h3>
+                <p>Mechanics, Thermodynamics, Electromagnetism</p>
+                <div class="progress-bar" aria-label="40% Complete">
+                    <div class="progress-fill" style="width: 40%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                </div>
+                <small>40% Complete • 29 challenges</small>
+            </div>
+
+            <div class="subject-card" tabindex="0" onclick="showChallenges('chemistry')" aria-label="Chemistry">
+                <div class="subject-icon" aria-hidden="true">🧪</div>
+                <h3>Chemistry</h3>
+                <p>Organic, Inorganic, Physical Chemistry</p>
+                <div class="progress-bar" aria-label="55% Complete">
+                    <div class="progress-fill" style="width: 55%; background: linear-gradient(90deg, #ef4444, #f87171);"></div>
+                </div>
+                <small>55% Complete • 32 challenges</small>
+            </div>
+
+            <div class="subject-card" tabindex="0" onclick="showChallenges('engineering')" aria-label="Engineering">
+                <div class="subject-icon" aria-hidden="true">⚙️</div>
+                <h3>Engineering</h3>
+                <p>Mechanical, Electrical, Software Engineering</p>
+                <div class="progress-bar" aria-label="35% Complete">
+                    <div class="progress-fill" style="width: 35%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div>
+                </div>
+                <small>35% Complete • 41 challenges</small>
+            </div>
+
+            <div class="subject-card" tabindex="0" onclick="showChallenges('biology')" aria-label="Biology">
+                <div class="subject-icon" aria-hidden="true">🧬</div>
+                <h3>Biology</h3>
+                <p>Molecular Biology, Genetics, Ecology</p>
+                <div class="progress-bar" aria-label="45% Complete">
+                    <div class="progress-fill" style="width: 45%; background: linear-gradient(90deg, #06b6d4, #67e8f9);"></div>
+                </div>
+                <small>45% Complete • 28 challenges</small>
+            </div>
+        </section>
+
+        <!-- Legacy float teaser row (yeah, I still like floats sometimes) -->
+        <div class="legacy-teasers clearfix" style="display:block;">
+            <div class="box" style="min-height: 80px;">
+                <strong>Did you know?</strong>
+                <div style="margin-top:7px;">STEM is cooler with projects you pick yourself.</div>
+            </div>
+            <div class="box" style="min-height: 80px;">
+                <strong>Pro tip</strong>
+                <div style="margin-top:9px;">Try the hard challenges after warming up. Trust me.</div>
+            </div>
+        </div>
+
+        <!-- Challenges Section -->
+        <section id="challenges" class="challenge-section hidden" aria-label="Challenges">
+            <div class="tab-buttons" role="tablist" aria-label="Filter Challenges by Difficulty">
+                <button class="tab-button active" onclick="filterChallenges('all', event)" role="tab" aria-selected="true">All</button>
+                <button class="tab-button" onclick="filterChallenges('easy', event)" role="tab" aria-selected="false">Easy</button>
+                <button class="tab-button" onclick="filterChallenges('medium', event)" role="tab" aria-selected="false">Medium</button>
+                <button class="tab-button" onclick="filterChallenges('hard', event)" role="tab" aria-selected="false">Hard</button>
+            </div>
+            <div class="tab-buttons" role="tablist" aria-label="Filter Challenges by Language" style="margin-top: 0.5rem;">
+                <button class="tab-button active" onclick="filterByLanguage('all', event)" role="tab" aria-selected="true">All Languages</button>
+                <button class="tab-button" onclick="filterByLanguage('python', event)" role="tab" aria-selected="false">Python</button>
+                <button class="tab-button" onclick="filterByLanguage('javascript', event)" role="tab" aria-selected="false">JavaScript</button>
+                <button class="tab-button" onclick="filterByLanguage('cpp', event)" role="tab" aria-selected="false">C++</button>
+            </div>
+
+            <div class="challenge-layout">
+                <aside class="challenge-sidebar">
+                    <div class="sidebar-card">
+                        <h4 style="margin-bottom:6px;">Filters</h4>
+                        <label style="display:block; margin:6px 0;"><input type="checkbox" checked> Show solved</label>
+                        <label style="display:block; margin:6px 0;"><input type="checkbox"> Hide locked</label>
+                        <label style="display:block; margin:6px 0;"><input type="checkbox" checked> Show hints</label>
+                    </div>
+                    <div class="sidebar-card" style="margin-top:10px;">
+                        <h4 style="margin-bottom:6px;">Topics</h4>
+                        <div class="tag-cloud">
+                            <span class="tag">Arrays</span>
+                            <span class="tag">Graphs</span>
+                            <span class="tag">Chemistry</span>
+                            <span class="tag">Quantum</span>
+                            <span class="tag">DP</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="problem-cards">
+                    <div class="problem-card" data-id="fizzbuzz-rev" data-difficulty="easy" data-language="javascript">
+                        <div class="pc-head">
+                            <span class="pc-title">FizzBuzz Revisited</span>
+                            <span class="pc-diff easy">easy</span>
+                        </div>
+                        <div class="pc-meta">
+                            <span class="pc-lang">JS</span>
+                            <span class="pc-solved">Solved by you</span>
+                            <button class="pc-try" onclick="navigateToProblem('fizzbuzz-rev')">Try</button>
+                        </div>
+                    </div>
+
+                    <div class="problem-card" data-id="two-sum-hm" data-difficulty="medium" data-language="python">
+                        <div class="pc-head">
+                            <span class="pc-title">Two Sum (hashmap)</span>
+                            <span class="pc-diff medium">medium</span>
+                        </div>
+                        <div class="pc-meta">
+                            <span class="pc-lang">Py</span>
+                            <span class="pc-solved" style="opacity:0.7;">45% success</span>
+                            <button class="pc-try alt" onclick="navigateToProblem('two-sum-hm')">Open</button>
+                        </div>
+                    </div>
+
+                    <div class="problem-card" data-id="lis-nlogn" data-difficulty="hard" data-language="cpp">
+                        <div class="pc-head">
+                            <span class="pc-title">LIS in O(n log n)</span>
+                            <span class="pc-diff hard">hard</span>
+                        </div>
+                        <div class="pc-meta">
+                            <span class="pc-lang">C++</span>
+                            <span class="pc-solved" style="opacity:0.7;">18% success</span>
+                            <button class="pc-try" onclick="navigateToProblem('lis-nlogn')">Solve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge: Two Sum Problem -->
+            <article class="challenge-item" data-difficulty="medium" data-language="python" aria-label="Two Sum Problem">
+                <h3>Two Sum Problem</h3>
+                <span class="difficulty medium" aria-label="Medium Difficulty">Medium</span>
+                <p>Given an array of integers, return indices of two numbers that add up to a specific target.</p>
+                
+                <div class="code-editor">
+                    <label for="code1" class="visually-hidden">Python Code Editor for Two Sum</label>
+                    <textarea id="code1" spellcheck="false" aria-label="Python code editor for Two Sum" placeholder="def two_sum(nums, target):
+    # Write your solution here
+    pass">def two_sum(nums, target):
+    # Write your solution here
+    pass</textarea>
+                </div>
+                <button class="run-button" onclick="runCode('code1')" aria-label="Run Code for Two Sum">Run Code</button>
+                <div id="result1" style="margin-top: 1rem; padding: 1rem; background: #f9fafb; border-radius: 8px; display: none;">
+                    <strong>Test Results:</strong> <span style="color: #10b981;">✓ All tests passed!</span>
+                </div>
+            </article>
+
+            <!-- Challenge: Chemical Formula Balance -->
+            <article class="challenge-item" data-difficulty="easy" data-language="javascript" aria-label="Chemical Formula Balance">
+                <h3>Chemical Formula Balance</h3>
+                <span class="difficulty easy" aria-label="Easy Difficulty">Easy</span>
+                <p>Balance the chemical equation: H₂ + O₂ → H₂O</p>
+                
+                <div style="background: white; border: 2px solid #e5e7eb; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                    <label for="chem-balance-input" class="visually-hidden">Enter coefficients for balancing equation</label>
+                    <input id="chem-balance-input" type="text" placeholder="Enter coefficients (e.g., 2,1,2)" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 4px;">
+                </div>
+                <button class="run-button" onclick="checkBalance(event)" aria-label="Check Chemical Balance Answer">Check Answer</button>
+            </article>
+
+            <!-- Challenge: Quantum State Calculation -->
+            <article class="challenge-item" data-difficulty="hard" data-language="python" aria-label="Quantum State Calculation">
+                <h3>Quantum State Calculation</h3>
+                <span class="difficulty hard" aria-label="Hard Difficulty">Hard</span>
+                <p>Calculate the probability amplitude for a quantum system in superposition.</p>
+                
+                <div class="code-editor">
+                    <label for="code2" class="visually-hidden">Python Code Editor for Quantum State Calculation</label>
+                    <textarea id="code2" spellcheck="false" aria-label="Python code editor for Quantum State Calculation" placeholder="import numpy as np
+
+def quantum_amplitude(psi):
+    # Calculate probability amplitude
+    pass"></textarea>
+                </div>
+                <button class="run-button" onclick="runCode('code2')" aria-label="Run Simulation for Quantum State">Run Simulation</button>
+            </article>
+
+            <!-- Challenge: Valid Parentheses (JavaScript) -->
+            <article class="challenge-item" data-difficulty="medium" data-language="javascript" aria-label="Valid Parentheses">
+                <h3>Valid Parentheses (JS)</h3>
+                <span class="difficulty medium" aria-label="Medium Difficulty">Medium</span>
+                <p>Given a string containing just the characters '()[]{}', determine if the input string is valid.</p>
+                <div class="code-editor">
+                    <label for="code3" class="visually-hidden">JavaScript Code Editor for Valid Parentheses</label>
+                    <textarea id="code3" spellcheck="false" aria-label="JavaScript editor for Valid Parentheses" placeholder="function isValid(s) {\n  // Write your solution\n}"></textarea>
+                </div>
+                <button class="run-button" onclick="runCode('code3')" aria-label="Run Code for Valid Parentheses">Run Code</button>
+                <div id="result3" style="margin-top: 1rem; padding: 1rem; background: #f9fafb; border-radius: 8px; display: none;"></div>
+            </article>
+
+            <!-- Challenge: Longest Increasing Subsequence (C++) -->
+            <article class="challenge-item" data-difficulty="hard" data-language="cpp" aria-label="Longest Increasing Subsequence">
+                <h3>Longest Increasing Subsequence (C++)</h3>
+                <span class="difficulty hard" aria-label="Hard Difficulty">Hard</span>
+                <p>Compute the length of the longest strictly increasing subsequence.</p>
+                <div class="code-editor">
+                    <label for="code4" class="visually-hidden">C++ Code Editor for LIS</label>
+                    <textarea id="code4" spellcheck="false" aria-label="C++ editor for LIS" placeholder="#include &lt;bits/stdc++.h&gt;\nusing namespace std;\nint lengthOfLIS(vector<int>& nums) {\n  // Write your solution\n}"></textarea>
+                </div>
+                <button class="run-button" onclick="runCode('code4')" aria-label="Run Code for LIS">Run Code</button>
+                <div id="result4" style="margin-top: 1rem; padding: 1rem; background: #f9fafb; border-radius: 8px; display: none;"></div>
+            </article>
+        </section>
+
+        <!-- Leaderboard Section -->
+        <section id="leaderboard" class="leaderboard hidden" aria-label="Leaderboard">
+            <h2>🏆 Global Leaderboard</h2>
+            <div class="leaderboard-item" aria-label="Rank 1">
+                <div>
+                    <span class="rank">#1</span>
+                    <strong>Alex Chen</strong> - MIT
+                </div>
+                <div>2,847 XP</div>
+            </div>
+            <div class="leaderboard-item" aria-label="Rank 2" style="padding-right:1.1rem;">
+                <div>
+                    <span class="rank">#2</span>
+                    <strong>Sarah Johnson</strong> - Stanford
+                </div>
+                <div>2,693 XP</div>
+            </div>
+            <div class="leaderboard-item" aria-label="Rank 3">
+                <div>
+                    <span class="rank">#3</span>
+                    <strong>Marcus Rodriguez</strong> - Caltech
+                </div>
+                <div>2,541 XP</div>
+            </div>
+            <div class="leaderboard-item" style="background: #eff6ff; border: 2px solid #3b82f6;" aria-label="Your Rank">
+                <div>
+                    <span class="rank">#12</span>
+                    <strong>You</strong> - Your School
+                </div>
+                <div>1,347 XP</div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="dashboard hidden" aria-label="User Profile">
+            <h2>👤 Your Profile</h2>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
+                <div class="u-pl-7" style="text-align: center;">
+                    <div class="profile-avatar">👨‍💻</div>
+
+                    <h3>John Doe</h3>
+                    <p style="color: #6b7280;">Level 15 STEM Explorer</p>
+                </div>
+                <div>
+                    <h4>Skills Mastered</h4>
+                    <div style="margin: 1rem 0;">
+                        <span class="achievement-badge">Python Programming</span>
+                        <span class="achievement-badge">Calculus</span>
+                        <span class="achievement-badge">Organic Chemistry</span>
+                        <span class="achievement-badge">Data Structures</span>
+                    </div>
+                    <h4 style="margin-top: 2rem;">Learning Streak</h4>
+                    <div style="font-size: 2rem; color: #f59e0b; margin: 0.5rem 0;">🔥 42 days</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Little personality: yes, I know it's 2am -->
+    <footer class="site-footer" style="color:#e5e7eb; text-align:center; padding: 1.25rem 1rem;">
+        <div style="opacity:0.9;">Built with ☕ and too much CSS — A.</div>
+        <!-- Note to self: replace emoji with svg logo when I have time -->
+    </footer>
+
+    <!-- Problem Detail View (hash-routed) -->
+    <section id="problem-detail" class="challenge-section hidden" aria-label="Problem Detail" style="max-width: 1100px; margin: 1rem auto;">
+        <div class="pd-header" style="display:flex; align-items:center; justify-content:space-between;">
+            <button class="pc-try" onclick="window.location.hash = '#/challenges'">← Back</button>
+            <div class="rank-badge" id="pd-diff">Diff</div>
+        </div>
+        <h2 id="pd-title" style="margin-top: 0.75rem;">Problem Title</h2>
+        <p id="pd-desc" style="color:#374151; margin: 0.5rem 0 1rem;">Short description...</p>
+        <div class="code-editor">
+            <label for="pd-code" class="visually-hidden">Code editor</label>
+            <textarea id="pd-code" spellcheck="false" aria-label="Code editor"></textarea>
+        </div>
+        <div style="display:flex; align-items:center; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="run-button" onclick="runCode('pd-code')">Run Code</button>
+            <button class="pc-try alt" onclick="toggleHint()" id="hintBtn">Show hint</button>
+            <span id="pd-lang" class="pc-lang">Lang</span>
+        </div>
+        <div id="pd-hint" class="sidebar-card hidden" style="margin-top: 0.75rem;">Try thinking in terms of a map from value to index.</div>
+        <div id="pd-result" style="margin-top: 1rem; padding: 1rem; background: #f9fafb; border-radius: 8px; display: none;"></div>
+    </section>
+</body>
+</html>

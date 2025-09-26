@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - STEM Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container" style="max-width: 560px;">
+        <h1 style="color: white; text-align: center; margin: 2rem 0;">Create your account</h1>
+        <div class="dashboard" role="form" aria-label="Signup Form">
+            <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 1rem;">
+                <h2 style="margin: 0;">Sign up</h2>
+                <a href="login.html" class="cta-button" style="padding: 0.5rem 1rem; text-decoration: none;">Login</a>
+            </div>
+
+            <label for="su-name" style="display:block; margin: 0.5rem 0 0.25rem;">Full Name</label>
+            <input id="su-name" type="text" placeholder="Your full name" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <label for="su-email" style="display:block; margin: 0.75rem 0 0.25rem;">Email</label>
+            <input id="su-email" type="email" placeholder="your@email.com" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <label for="su-roll" style="display:block; margin: 0.75rem 0 0.25rem;">Roll Number</label>
+            <input id="su-roll" type="text" placeholder="School roll number" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <label for="su-school" style="display:block; margin: 0.75rem 0 0.25rem;">School</label>
+            <input id="su-school" type="text" placeholder="Your school name" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <label for="su-username" style="display:block; margin: 0.75rem 0 0.25rem;">Username</label>
+            <input id="su-username" type="text" placeholder="Choose a username" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <label for="su-password" style="display:block; margin: 0.75rem 0 0.25rem;">Password</label>
+            <input id="su-password" type="password" placeholder="Choose a password" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
+
+            <button id="doSignup" class="run-button" style="width: 100%; margin-top: 1rem;">Create account</button>
+            <p id="su-error" style="color:#ef4444; margin-top:0.75rem; display:none;"></p>
+            <p id="su-success" style="color:#10b981; margin-top:0.75rem; display:none;">Account created! Redirecting to login…</p>
+        </div>
+        <p style="text-align:center; margin-top: 1rem;"><a href="index.html" style="color: white; text-decoration: underline;">Back to Home</a></p>
+    </main>
+
+    <script>
+    (function(){
+        function getUsers(){
+            try { return JSON.parse(localStorage.getItem('sih_users')) || []; } catch(_) { return []; }
+        }
+        function setUsers(users){
+            localStorage.setItem('sih_users', JSON.stringify(users));
+        }
+        document.getElementById('doSignup').addEventListener('click', function(){
+            const name = document.getElementById('su-name').value.trim();
+            const email = document.getElementById('su-email').value.trim();
+            const roll = document.getElementById('su-roll').value.trim();
+            const school = document.getElementById('su-school').value.trim();
+            const username = document.getElementById('su-username').value.trim();
+            const password = document.getElementById('su-password').value;
+
+            const error = document.getElementById('su-error');
+            const success = document.getElementById('su-success');
+            error.style.display = 'none';
+            success.style.display = 'none';
+
+            if (!name || !email || !roll || !school || !username || !password) {
+                error.textContent = 'Please fill in all fields';
+                error.style.display = 'block';
+                return;
+            }
+
+            const users = getUsers();
+            if (users.some(u => u.username === username)) {
+                error.textContent = 'Username already taken';
+                error.style.display = 'block';
+                return;
+            }
+
+            users.push({ name, email, roll, school, username, password });
+            setUsers(users);
+            success.style.display = 'block';
+            setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+        });
+    })();
+    </script>
+</body>
+</html>
+
